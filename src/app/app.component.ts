@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit, VERSION } from '@angular/core';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'my-app',
@@ -10,7 +11,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    let observable = from([10, 20, 30]);
+    let s = observable.subscribe(x => console.log(x));
+    s.unsubscribe();
+  }
 
   ngOnDestroy() {}
 }
